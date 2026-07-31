@@ -9,7 +9,16 @@ class ToDoList():
         print(f'{name} added to tasks correctly.')
 
     def show_tasks(self):
-        pass
+        i=0
+        if len(self.tasks) == 0 :
+            print("There is no tasks.")
+        else :
+            for t in self.tasks:
+                i+=1
+                print(f'{i}: {t.name} \ndescription: {t.description} \npriority: {t.priority}\n')
+
+        
+        
 
     def remove_task(self, name):
         for t in self.tasks:
