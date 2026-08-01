@@ -1,4 +1,5 @@
 from task import Task
+import csv
 
 class ToDoList():
     def __init__(self):
@@ -32,7 +33,21 @@ class ToDoList():
        
 
     def save_to_csv(self): 
-        pass
+        with open("tasks.csv", "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["name", "description", "priority"])
+
+            for task in self.tasks:
+                writer.writerow([task.name, task.description, task.priority]) 
+
+    
 
     def load_from_csv(self):
-        pass
+        with open("tasks.csv" , "r") as f:
+            reader = csv.reader(f)
+            next(reader)
+
+
+            for r in reader :
+                task = Task(r[0], r[1], r[2])
+                self.tasks.append(task)
