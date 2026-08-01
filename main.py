@@ -1,12 +1,19 @@
 from todo_management import ToDoList
 
 todo = ToDoList()
+todo.load_from_csv()
 
 while True:
     print("Welcome to your personal TodoList!")
     print(f'1. Show Tasks \n2. Add a Task \n3.Remove a Task \n4. Save Tasks \n5. Load Tasks \n6.Exit \n')
     print("Enter your choice:")
-    choice = int(input())
+    
+    try:
+        choice = int(input())
+    except ValueError:
+        print("Please choose a number.")
+        continue
+
 
     match choice:
         case 1:
@@ -33,6 +40,7 @@ while True:
 
         case 6:
             print("Exiting...")
+            todo.save_to_csv()
             break
 
         case _ :

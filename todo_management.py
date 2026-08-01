@@ -43,11 +43,16 @@ class ToDoList():
     
 
     def load_from_csv(self):
-        with open("tasks.csv" , "r") as f:
-            reader = csv.reader(f)
-            next(reader)
+        try:
+            with open("tasks.csv" , "r") as f:
+                reader = csv.reader(f)
+                next(reader)
 
 
-            for r in reader :
-                task = Task(r[0], r[1], r[2])
-                self.tasks.append(task)
+                for r in reader :
+                    task = Task(r[0], r[1], r[2])
+                    self.tasks.append(task)
+
+        except FileNotFoundError:
+            print("Starting with empty list.")
+        
