@@ -8,6 +8,7 @@ class ToDoList():
     def add_task(self, name, description, priority): 
         self.tasks.append(Task(name, description, priority))
         print(f'{name} added to tasks correctly.')
+        self.save_to_csv()
 
     def show_tasks(self):
         i=0
@@ -26,6 +27,7 @@ class ToDoList():
             if t.name == name :
                 self.tasks.remove(t)
                 print(f'{name} removed from tasks.')
+                self.save_to_csv()
                 return
              
         print("Not found in tasks.")
@@ -44,6 +46,7 @@ class ToDoList():
 
     def load_from_csv(self):
         try:
+            self.tasks.clear()
             with open("tasks.csv" , "r") as f:
                 reader = csv.reader(f)
                 next(reader)

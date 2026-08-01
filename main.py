@@ -1,13 +1,14 @@
 from todo_management import ToDoList
+import os 
 
 todo = ToDoList()
 todo.load_from_csv()
+print("Welcome to your personal TodoList!")
 
 while True:
-    print("Welcome to your personal TodoList!")
-    print(f'1. Show Tasks \n2. Add a Task \n3.Remove a Task \n4. Save Tasks \n5. Load Tasks \n6.Exit \n')
+    print(f'\n1. Show Tasks \n2. Add a Task \n3. Remove a Task \n4. Save Tasks \n5. Load Tasks \n6. Exit \n')
     print("Enter your choice:")
-    
+
     try:
         choice = int(input())
     except ValueError:
